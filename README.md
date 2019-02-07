@@ -1,20 +1,9 @@
-# Стенд для занятия  «Дисковая подсистема»
 
-Используйте для стенда данный [Vagrantfile](Vagrantfile)
+1. Run prepare_resize.sh
+    after reload
+2. Run resize.sh
+    after reload
+3. Run home.sh
 
-# Как запустить
-
-Склонируйте данный репозиторий, и поднимите стенд:
-```bash
-git clone https://gitlab.com/otus_linux/stands-02-disks.git
-cd stands-02-disks
-vagrant up
-```
-
-В итоге развернется один хост с пятью подключенными дисками. Вы можете смело видоизменять Vagrantfile для ваших конфигураций.
-
-## FYI
-
-* Дополнительные диски создаются в каталоге `$HOME/VirtualBox VMs/disks` - если вас не устраивает данное поведение, то вы можете изменить его просто внеся правки в Vagrantfile.
- 
-* При создании дисков в той же директории, что и Vagrantfile все они будут скопированы внутрь виртуальной машины, что может повлечь за собой 100% занятие места внутри ВМ. 
+Actions in files:
+    .\logs\action_log#.txt
