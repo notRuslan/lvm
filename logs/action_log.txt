@@ -1,0 +1,535 @@
+Script started on Thu 07 Feb 2019 08:07:44 AM UTC
+]0;root@lvm:~[?1034h[root@lvm ~]# [H[2J[root@lvm ~]# lsblk
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                       8:0    0   40G  0 disk 
+├─sda1                    8:1    0    1M  0 part 
+├─sda2                    8:2    0    1G  0 part /boot
+└─sda3                    8:3    0   39G  0 part 
+  ├─VolGroup00-LogVol00 253:0    0 37.5G  0 lvm  /
+  └─VolGroup00-LogVol01 253:1    0  1.5G  0 lvm  [SWAP]
+sdb                       8:16   0   10G  0 disk 
+sdc                       8:32   0    2G  0 disk 
+sdd                       8:48   0    1G  0 disk 
+sde                       8:64   0    1G  0 disk 
+]0;root@lvm:~[root@lvm ~]# yum install xfsdump -t[Ky
+Loaded plugins: fastestmirror
+Loading mirror speeds from cached hostfile
+ * base: mirror.gadix.com
+ * extras: ftp.cica.es
+ * updates: mirror.gadix.com
+Resolving Dependencies
+--> Running transaction check
+---> Package xfsdump.x86_64 0:3.1.7-1.el7 will be installed
+--> Processing Dependency: attr >= 2.0.0 for package: xfsdump-3.1.7-1.el7.x86_64
+--> Running transaction check
+---> Package attr.x86_64 0:2.4.46-13.el7 will be installed
+--> Finished Dependency Resolution
+
+Dependencies Resolved
+
+====================================================================================================
+ Package               Arch                 Version                        Repository          Size
+====================================================================================================
+Installing:
+ xfsdump               x86_64               3.1.7-1.el7                    base               308 k
+Installing for dependencies:
+ attr                  x86_64               2.4.46-13.el7                  base                66 k
+
+Transaction Summary
+====================================================================================================
+Install  1 Package (+1 Dependent package)
+
+Total download size: 374 k
+Installed size: 1.1 M
+Downloading packages:
+(2/2): xfsdump-3.1.7-1.el7.x86_64.r 0% [                          ]  0.0 B/s |    0 B  --:--:-- ETA (1/2): attr-2.4.46-13.el7.x86_64.rpm                                         |  66 kB  00:00:00     
+(2/2): xfsdump-3.1.7-1.el7.x86_64.rpm                                        | 308 kB  00:00:00     
+----------------------------------------------------------------------------------------------------
+Total                                                               267 kB/s | 374 kB  00:00:01     
+Running transaction check
+Running transaction test
+Transaction test succeeded
+Running transaction
+  Installing : attr-2.4.46-13.el7.x86_64 [                                                    ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [###                                                 ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#########                                           ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##############                                      ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [###############                                     ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [####################                                ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#####################                               ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [######################                              ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##########################                          ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [###########################                         ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [################################                    ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#################################                   ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##################################                  ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [####################################                ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [######################################              ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [########################################            ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##########################################          ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [###########################################         ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#############################################       ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [###############################################     ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [################################################    ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [#################################################   ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [##################################################  ] 1/2  Installing : attr-2.4.46-13.el7.x86_64 [################################################### ] 1/2  Installing : attr-2.4.46-13.el7.x86_64                                                        1/2 
+  Installing : xfsdump-3.1.7-1.el7.x86_64 [                                                   ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###                                                ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [######                                             ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [##########                                         ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#############                                      ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###############                                    ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [##################                                 ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [######################                             ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#########################                          ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#############################                      ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [################################                   ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###################################                ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#####################################              ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#######################################            ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [########################################           ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [###########################################        ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#############################################      ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [################################################   ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [#################################################  ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64 [################################################## ] 2/2  Installing : xfsdump-3.1.7-1.el7.x86_64                                                       2/2 
+  Verifying  : attr-2.4.46-13.el7.x86_64                                                        1/2 
+  Verifying  : xfsdump-3.1.7-1.el7.x86_64                                                       2/2 
+
+Installed:
+  xfsdump.x86_64 0:3.1.7-1.el7                                                                      
+
+Dependency Installed:
+  attr.x86_64 0:2.4.46-13.el7                                                                       
+
+Complete!
+]0;root@lvm:~[root@lvm ~]# [H[2J[root@lvm ~]# pa[K[Kdf -T
+Filesystem                      Type     1K-blocks    Used Available Use% Mounted on
+/dev/mapper/VolGroup00-LogVol00 xfs       39269648 1126404  38143244   3% /
+devtmpfs                        devtmpfs    110948       0    110948   0% /dev
+tmpfs                           tmpfs       120692       0    120692   0% /dev/shm
+tmpfs                           tmpfs       120692    4656    116036   4% /run
+tmpfs                           tmpfs       120692       0    120692   0% /sys/fs/cgroup
+/dev/sda2                       xfs        1038336   64076    974260   7% /boot
+tmpfs                           tmpfs        24140       0     24140   0% /run/user/1000
+tmpfs                           tmpfs        24140       0     24140   0% /run/user/0
+]0;root@lvm:~[root@lvm ~]# pvcreate /dev/sdb
+  Physical volume "/dev/sdb" successfully created.
+]0;root@lvm:~[root@lvm ~]# vgcreate vg_root /dev/sdb
+  Volume group "vg_root" successfully created
+]0;root@lvm:~[root@lvm ~]# # lvcreate -n lv_root -l +100%FREE /dev/vg_root
+]0;root@lvm:~[root@lvm ~]# lsblk
+NAME                    MAJ:MIN RM  SIZE RO TYPE MOUNTPOINT
+sda                       8:0    0   40G  0 disk 
+├─sda1                    8:1    0    1M  0 part 
+├─sda2                    8:2    0    1G  0 part /boot
+└─sda3                    8:3    0   39G  0 part 
+  ├─VolGroup00-LogVol00 253:0    0 37.5G  0 lvm  /
+  └─VolGroup00-LogVol01 253:1    0  1.5G  0 lvm  [SWAP]
+sdb                       8:16   0   10G  0 disk 
+sdc                       8:32   0    2G  0 disk 
+sdd                       8:48   0    1G  0 disk 
+sde                       8:64   0    1G  0 disk 
+]0;root@lvm:~[root@lvm ~]# 
+]0;root@lvm:~[root@lvm ~]# 
+]0;root@lvm:~[root@lvm ~]# 
+]0;root@lvm:~[root@lvm ~]# 
+]0;root@lvm:~[root@lvm ~]# mkfs.xfs /dev/vg_root/lv_root
+/dev/vg_root/lv_root: No such file or directory
+Usage: mkfs.xfs
+/* blocksize */		[-b log=n|size=num]
+/* metadata */		[-m crc=0|1,finobt=0|1,uuid=xxx]
+/* data subvol */	[-d agcount=n,agsize=n,file,name=xxx,size=num,
+			    (sunit=value,swidth=value|su=num,sw=num|noalign),
+			    sectlog=n|sectsize=num
+/* force overwrite */	[-f]
+/* inode size */	[-i log=n|perblock=n|size=num,maxpct=n,attr=0|1|2,
+			    projid32bit=0|1]
+/* no discard */	[-K]
+/* log subvol */	[-l agnum=n,internal,size=num,logdev=xxx,version=n
+			    sunit=value|su=num,sectlog=n|sectsize=num,
+			    lazy-count=0|1]
+/* label */		[-L label (maximum 12 characters)]
+/* naming */		[-n log=n|size=num,version=2|ci,ftype=0|1]
+/* no-op info only */	[-N]
+/* prototype file */	[-p fname]
+/* quiet */		[-q]
+/* realtime subvol */	[-r extsize=num,size=num,rtdev=xxx]
+/* sectorsize */	[-s log=n|size=num]
+/* version */		[-V]
+			devicename
+<devicename> is required unless -d name=xxx is given.
+<num> is xxx (bytes), xxxs (sectors), xxxb (fs blocks), xxxk (xxx KiB),
+      xxxm (xxx MiB), xxxg (xxx GiB), xxxt (xxx TiB) or xxxp (xxx PiB).
+<value> is xxx (512 byte blocks).
+]0;root@lvm:~[root@lvm ~]# mkfs.xfs /dev/vg_root/lv_root
+/dev/vg_root/lv_root: No such file or directory
+Usage: mkfs.xfs
+/* blocksize */		[-b log=n|size=num]
+/* metadata */		[-m crc=0|1,finobt=0|1,uuid=xxx]
+/* data subvol */	[-d agcount=n,agsize=n,file,name=xxx,size=num,
+			    (sunit=value,swidth=value|su=num,sw=num|noalign),
+			    sectlog=n|sectsize=num
+/* force overwrite */	[-f]
+/* inode size */	[-i log=n|perblock=n|size=num,maxpct=n,attr=0|1|2,
+			    projid32bit=0|1]
+/* no discard */	[-K]
+/* log subvol */	[-l agnum=n,internal,size=num,logdev=xxx,version=n
+			    sunit=value|su=num,sectlog=n|sectsize=num,
+			    lazy-count=0|1]
+/* label */		[-L label (maximum 12 characters)]
+/* naming */		[-n log=n|size=num,version=2|ci,ftype=0|1]
+/* no-op info only */	[-N]
+/* prototype file */	[-p fname]
+/* quiet */		[-q]
+/* realtime subvol */	[-r extsize=num,size=num,rtdev=xxx]
+/* sectorsize */	[-s log=n|size=num]
+/* version */		[-V]
+			devicename
+<devicename> is required unless -d name=xxx is given.
+<num> is xxx (bytes), xxxs (sectors), xxxb (fs blocks), xxxk (xxx KiB),
+      xxxm (xxx MiB), xxxg (xxx GiB), xxxt (xxx TiB) or xxxp (xxx PiB).
+<value> is xxx (512 byte blocks).
+]0;root@lvm:~[root@lvm ~]# lvs
+  LV       VG         Attr       LSize   Pool Origin Data%  Meta%  Move Log Cpy%Sync Convert
+  LogVol00 VolGroup00 -wi-ao---- <37.47g                                                    
+  LogVol01 VolGroup00 -wi-ao----   1.50g                                                    
+]0;root@lvm:~[root@lvm ~]# [H[2J[root@lvm ~]# pvs
+  PV         VG         Fmt  Attr PSize   PFree  
+  /dev/sda3  VolGroup00 lvm2 a--  <38.97g      0 
+  /dev/sdb   vg_root    lvm2 a--  <10.00g <10.00g
+]0;root@lvm:~[root@lvm ~]# pv[K[Klgs
+bash: lgs: command not found
+]0;root@lvm:~[root@lvm ~]# lgroup
+lgroupadd  lgroupdel  lgroupmod  
+[root@lvm ~]# lgroup[K[K[K[K[K[Kvgdisplay 
+  --- Volume group ---
+  VG Name               VolGroup00
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  3
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                2
+  Open LV               2
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               <38.97 GiB
+  PE Size               32.00 MiB
+  Total PE              1247
+  Alloc PE / Size       1247 / <38.97 GiB
+  Free  PE / Size       0 / 0   
+  VG UUID               SA8LTU-F2yz-FEV1-RdgT-hw0Z-iRxh-yHFKuU
+   
+  --- Volume group ---
+  VG Name               vg_root
+  System ID             
+  Format                lvm2
+  Metadata Areas        1
+  Metadata Sequence No  1
+  VG Access             read/write
+  VG Status             resizable
+  MAX LV                0
+  Cur LV                0
+  Open LV               0
+  Max PV                0
+  Cur PV                1
+  Act PV                1
+  VG Size               <10.00 GiB
+  PE Size               4.00 MiB
+  Total PE              2559
+  Alloc PE / Size       0 / 0   
+  Free  PE / Size       2559 / <10.00 GiB
+  VG UUID               2GB0xP-xh1m-zj9l-UGxI-ljon-RXmo-vD5XNH
+   
+]0;root@lvm:~[root@lvm ~]# [H[2J[root@lvm ~]#  lvcreate -n lv_root -l +100%FREE /dev/vg_root
+  Logical volume "lv_root" created.
+]0;root@lvm:~[root@lvm ~]# 
+]0;root@lvm:~[root@lvm ~]#  mkfs.xfs /dev/vg_root/lv_root[1P
+meta-data=/dev/vg_root/lv_root   isize=512    agcount=4, agsize=655104 blks
+         =                       sectsz=512   attr=2, projid32bit=1
+         =                       crc=1        finobt=0, sparse=0
+data     =                       bsize=4096   blocks=2620416, imaxpct=25
+         =                       sunit=0      swidth=0 blks
+naming   =version 2              bsize=4096   ascii-ci=0 ftype=1
+log      =internal log           bsize=4096   blocks=2560, version=2
+         =                       sectsz=512   sunit=0 blks, lazy-count=1
+realtime =none                   extsz=4096   blocks=0, rtextents=0
+]0;root@lvm:~[root@lvm ~]# mount /dev/vg_root/lv_root /mnt
+]0;root@lvm:~[root@lvm ~]# man xfsdump
+[?1049h[?1h=xfsdump(8)                           System Manager's Manual                           xfsdump(8)[m
+[m
+[1mNAME[0m[m
+       xfsdump - XFS filesystem incremental dump utility[m
+[m
+[1mSYNOPSIS[0m[m
+       [1mxfsdump[0m -h[m
+       [1mxfsdump[0m [ options ] -f [4mdest[24m [ -f [4mdest[24m ... ] [4mfilesystem[24m[m
+       [1mxfsdump[0m [ options ] - [4mfilesystem[24m[m
+       [1mxfsdump[0m -I [ subopt=value ... ][m
+[m
+[1mDESCRIPTION[0m[m
+       [4mxfsdump[24m  backs  up  files  and  their attributes in a filesystem.  The files are dumped to[m
+       storage media, a regular file, or standard output.  Options allow the operator to have all[m
+       files  dumped, just files that have changed since a previous dump, or just files contained[m
+       in a list of pathnames.[m
+[m
+       The [4mxfsrestore[24m(8) utility re-populates a filesystem with the contents of the dump.[m
+[m
+       Each invocation of [4mxfsdump[24m dumps just one filesystem.  That invocation is  termed  a  dump[m
+       session.   The  dump  session splits the filesystem into one or more dump streams, one per[m
+       destination.  The split is done in filesystem inode  number  (ino)  order,  at  boundaries[m
+       selected  to  equalize  the  size  of  each  stream.  Furthermore, the breakpoints between[m
+       streams may be in the middle of very large files (at extent boundaries)  if  necessary  to[m
+       achieve  reasonable  stream  size  equalization.   Each dump stream can span several media[m
+       objects, and a single media object can contain several dump streams.   The  typical  media[m
+       object is a tape cartridge.  The media object records the dump stream as one or more media[m
+       files.  A media file is a self-contained partial dump, intended to minimize the impact  of[m
+       media dropouts on the entire dump stream at the expense of increasing the time required to[m
+       complete the dump. By default only one media file is written unless a media file  size  is[m
+       specified  using the [1m-d[0m option. Other techniques, such as making a second copy of the dump[m
+       image, provide more protection against media failures than multiple media files will.[m
+[m
+       [4mxfsdump[24m maintains an online dump inventory in [4m/var/lib/xfsdump/inventory[24m.  The  [1m-I[0m  option[m
+       displays the inventory contents hierarchically.  The levels of the hierarchy are: filesys‐[m
+       tem, dump session, stream, and media file.[m
+[m
+       The options to [4mxfsdump[24m are:[m
+[m
+       [1m-a[0m   Specifies that files for which the Data Migration Facility (DMF) has complete offline[m
+            copies  (dual-state files) be treated as if they were offline (OFL).  This means that[m
+            the file data will not be dumped by xfsdump, resulting in a smaller  dump  file.   If[m
+            the  file  is  later restored the file data is still accessible through DMF.  If both[m
+            '-a option' and '-z option' are specified, the '-a option' takes precedence (see  '-z[m
+            option' below).[m
+[m
+       [1m-b[0m [4mblocksize[24m[m
+            Specifies  the blocksize, in bytes, to be used for the dump.  The same blocksize must[m
+            be specified to restore the tape.  If the [1m-m[0m option is not used,  then  [1m-b[0m  does  not[m
+            need to be specified. Instead, a default blocksize of 1Mb will be used.[m
+[m
+       [1m-c[0m [4mprogname[24m[m
+            Use  the specified program to alert the operator when a media change is required. The[m
+[7m Manual page xfsdump(8) line 1 (press h for help or q to quit)[27m[K[K            alert program is typically a script to send a mail or flash  a  window  to  draw  the[m
+[7m Manual page xfsdump(8) line 2 (press h for help or q to quit)[27m[K[K            operator's attention.[m
+[7m Manual page xfsdump(8) line 5 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 6 (press h for help or q to quit)[27m[K[K       [1m-d[0m [4mfilesize[24m[m
+[7m Manual page xfsdump(8) line 7 (press h for help or q to quit)[27m[K[K            Specifies  the  size,  in  megabytes, of dump media files.  If not specified, xfsdump[m
+[7m Manual page xfsdump(8) line 8 (press h for help or q to quit)[27m[K[K            will dump data to tape using a single media file per  media  object.   The  specified[m
+[7m Manual page xfsdump(8) line 9 (press h for help or q to quit)[27m[K[K            media  file  size may need to be adjusted if, for example, xfsdump cannot fit a media[m
+[7m Manual page xfsdump(8) line 10 (press h for help or q to quit)[27m[K[K            file onto a single tape.[m
+[7m Manual page xfsdump(8) line 11 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 12 (press h for help or q to quit)[27m[K[K       [1m-e[0m   Allow files to be excluded from the dump.  This will  cause  xfsdump  to  skip  files[m
+[7m Manual page xfsdump(8) line 13 (press h for help or q to quit)[27m[K[K            which  have  the  "no  dump" file attribute set. See the "Excluding individual files"[m
+[7m Manual page xfsdump(8) line 14 (press h for help or q to quit)[27m[K[K            section below for details on setting this file attribute.[m
+[7m Manual page xfsdump(8) line 15 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 16 (press h for help or q to quit)[27m[K[K       [1m-f[0m [4mdest[24m [ [1m-f[0m [4mdest[24m ... ][m
+[7m Manual page xfsdump(8) line 17 (press h for help or q to quit)[27m[K[K            Specifies a dump destination.  A dump destination can be the  pathname  of  a  device[m
+[7m Manual page xfsdump(8) line 18 (press h for help or q to quit)[27m[K[K            (such  as  a  tape  drive), a regular file or a remote tape drive (see [4mrmt[24m(8)).  This[m
+[7m Manual page xfsdump(8) line 19 (press h for help or q to quit)[27m[K[K            option must be omitted if the standard output option (a lone [1m-[0m preceding  the  source[m
+[7m Manual page xfsdump(8) line 20 (press h for help or q to quit)[27m[K[K            filesystem specification) is specified.[m
+[7m Manual page xfsdump(8) line 21 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 22 (press h for help or q to quit)[27m[K[K       [1m-l[0m [4mlevel[24m[m
+[7m Manual page xfsdump(8) line 23 (press h for help or q to quit)[27m[K[K            Specifies  a  dump level of 0 to 9.  The dump level determines the base dump to which[m
+[7m Manual page xfsdump(8) line 24 (press h for help or q to quit)[27m[K[K            this dump is relative.  The base dump is the most recent dump at a lesser  level.   A[m
+[7m Manual page xfsdump(8) line 25 (press h for help or q to quit)[27m[K[K            level  0 dump is absolute - all files are dumped.  A dump level where 1 <= [4mlevel[24m <= 9[m
+[7m Manual page xfsdump(8) line 26 (press h for help or q to quit)[27m[K[K            is referred to as an incremental dump.  Only files that have been changed  since  the[m
+[7m Manual page xfsdump(8) line 27 (press h for help or q to quit)[27m[K[K            base  dump are dumped.  Subtree dumps (see the [1m-s[0m option below) cannot be used as the[m
+[7m Manual page xfsdump(8) line 28 (press h for help or q to quit)[27m[K[K            base for incremental dumps.[m
+[7m Manual page xfsdump(8) line 29 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 30 (press h for help or q to quit)[27m[K[K       [1m-m[0m   Use the minimal tape protocol for non-scsi tape destinations or remote tape  destina‐[m
+[7m Manual page xfsdump(8) line 31 (press h for help or q to quit)[27m[K[K            tions  which are not scsi Linux tape drives nor IRIX tape drives.  This option cannot[m
+[7m Manual page xfsdump(8) line 32 (press h for help or q to quit)[27m[K[K            be used without specifying a blocksize to be used (see [1m-b[0m option above).[m
+[7m Manual page xfsdump(8) line 33 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 34 (press h for help or q to quit)[27m[K[K       [1m-o[0m   Overwrite the tape. With this option, [4mxfsdump[24m does not read the tape first  to  check[m
+[7m Manual page xfsdump(8) line 35 (press h for help or q to quit)[27m[K[K            the  contents.  This  option  may be used if [4mxfsdump[24m is unable to determine the block[m
+[7m Manual page xfsdump(8) line 36 (press h for help or q to quit)[27m[K[K            size of a tape .[m
+[7m Manual page xfsdump(8) line 37 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 38 (press h for help or q to quit)[27m[K[K       [1m-p[0m [4minterval[24m[m
+[7m Manual page xfsdump(8) line 39 (press h for help or q to quit)[27m[K[K            Causes progress reports to be printed at the specified interval.  [4minterval[24m  is  given[m
+[7m Manual page xfsdump(8) line 40 (press h for help or q to quit)[27m[K[K            in seconds.  The progress report indicates how many files have been dumped, the total[m
+[7m Manual page xfsdump(8) line 41 (press h for help or q to quit)[27m[K[K            number of files to dump, the percentage of data dumped, and the elapsed time.[m
+[7m Manual page xfsdump(8) line 42 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 43 (press h for help or q to quit)[27m[K[K       [1m-q[0m   Destination tape drive is a QIC tape.  QIC tapes only use a 512 byte  blocksize,  for[m
+[7m Manual page xfsdump(8) line 44 (press h for help or q to quit)[27m[K[K            which [4mxfsdump[24m must make special allowances.[m
+[7m Manual page xfsdump(8) line 45 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 46 (press h for help or q to quit)[27m[K[K       [1m-s[0m [4mpathname[24m [ [1m-s[0m [4mpathname[24m ... ][m
+[7m Manual page xfsdump(8) line 47 (press h for help or q to quit)[27m[K[K            Restricts the dump to files contained in the specified pathnames (subtrees).  A [4mpath‐[24m[m
+[7m Manual page xfsdump(8) line 48 (press h for help or q to quit)[27m[K[K            [4mname[24m must be relative to the mount point  of  the  filesystem.   For  example,  if  a[m
+[7m Manual page xfsdump(8) line 49 (press h for help or q to quit)[27m[K[K            filesystem  is  mounted  at [4m/d2[24m, the [4mpathname[24m argument for the directory [4m/d2/users[24m is[m
+[7m Manual page xfsdump(8) line 50 (press h for help or q to quit)[27m[K[K            ``users''.  A [4mpathname[24m can be a file or a directory; if it is a directory, the entire[m
+[7m Manual page xfsdump(8) line 51 (press h for help or q to quit)[27m[K[K            hierarchy  of  files  and subdirectories rooted at that directory is dumped.  Subtree[m
+[7m Manual page xfsdump(8) line 52 (press h for help or q to quit)[27m[K[K            dumps cannot be used as the base for incremental dumps (see the [1m-l[0m option above).[m
+[7m Manual page xfsdump(8) line 53 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 54 (press h for help or q to quit)[27m[K[K       [1m-t[0m [4mfile[24m[m
+[7m Manual page xfsdump(8) line 55 (press h for help or q to quit)[27m[K[K            Sets the dump time to the modification time of [4mfile[24m rather  than  using  the  current[m
+[7m Manual page xfsdump(8) line 56 (press h for help or q to quit)[27m[K[K            time.  [4mxfsdump[24m uses the dump time to determine what files need to be backed up during[m
+[7m Manual page xfsdump(8) line 57 (press h for help or q to quit)[27m[K[K            an incremental dump. This option should be used when dumping snapshots  so  that  the[m
+[7m Manual page xfsdump(8) line 58 (press h for help or q to quit)[27m[K[K            dump  time  matches the time the snapshot was taken. Otherwise files modified after a[m
+[7m Manual page xfsdump(8) line 59 (press h for help or q to quit)[27m[K[K            snapshot is taken may be skipped in the next incremental dump.[m
+[7m Manual page xfsdump(8) line 60 (press h for help or q to quit)[27m[K[K[m
+[7m Manual page xfsdump(8) line 61 (press h for help or q to quit)[27m[K[K       [1m-v[0m [4mverbosity[24m[m
+[7m Manual page xfsdump(8) line 62 (press h for help or q to quit)[27m[K[K       [1m-v[0m [4msubsys[24m=[4mverbosity[24m[,[4msubsys[24m=[4mverbosity[24m,...][m
+[7m Manual page xfsdump(8) line 63 (press h for help or q to quit)[27m[K[K            Specifies the level of detail used for messages displayed during the  course  of  the[m
+[7m Manual page xfsdump(8) line 64 (press h for help or q to quit)[27m[K[K            dump.  The  [4mverbosity[24m  argument  can  be  passed as either a string or an integer. If[m
+[7m Manual page xfsdump(8) line 65 (press h for help or q to quit)[27m[K[K            passed as a string the following values may be used: [1msilent[0m, [1mverbose[0m,  [1mtrace[0m,  [1mdebug[0m,[m
+[7m Manual page xfsdump(8) line 66 (press h for help or q to quit)[27m[K[K            or  [1mnitty[0m.  If passed as an integer, values from 0-5 may be used. The values 0-4 cor‐[m
+[7m Manual page xfsdump(8) line 67 (press h for help or q to quit)[27m[K[K-[K[7mDisplay a status column  (press RETURN)[27m[54;1H[K[K/[K--[KJJ[K[1;1H             section below for details on setting this file attribute.[m
+[2;1H [m
+[3;1H        [1m-f[0m [4mdest[24m [ [1m-f[0m [4mdest[24m ... ][m
+[4;1H             Specifies a dump destination.  A dump destination can be the  pathname  of  a  device[m
+[5;1H             (such  as  a  tape  drive), a regular file or a remote tape drive (see [4mrmt[24m(8)).  This[m
+[6;1H             option must be omitted if the standard output option (a lone [1m-[0m preceding  the  source[m
+[7;1H             filesystem specification) is specified.[m
+[8;1H [m
+[9;1H        [1m-l[0m [4mlevel[24m[m
+[10;1H             Specifies  a  dump level of 0 to 9.  The dump level determines the base dump to which[m
+[11;1H             this dump is relative.  The base dump is the most recent dump at a lesser  level.   A[m
+[12;1H             level  0 dump is absolute - all files are dumped.  A dump level where 1 <= [4mlevel[24m <= 9[m
+[13;1H             is referred to as an incremental dump.  Only files that have been changed  since  the[m
+[14;1H             base  dump are dumped.  Subtree dumps (see the [1m-s[0m option below) cannot be used as the[m
+[15;1H             base for incremental dumps.[m
+[16;1H [m
+[17;1H        [1m-m[0m   Use the minimal tape protocol for non-scsi tape destinations or remote tape  destina‐[m
+[18;1H             tions  which are not scsi Linux tape drives nor IRIX tape drives.  This option cannot[m
+[19;1H             be used without specifying a blocksize to be used (see [1m-b[0m option above).[m
+[20;1H [m
+[21;1H        [1m-o[0m   Overwrite the tape. With this option, [4mxfsdump[24m does not read the tape first  to  check[m
+[22;1H             the  contents.  This  option  may be used if [4mxfsdump[24m is unable to determine the block[m
+[23;1H             size of a tape .[m
+[24;1H [m
+[25;1H        [1m-p[0m [4minterval[24m[m
+[26;1H             Causes progress reports to be printed at the specified interval.  [4minterval[24m  is  given[m
+[27;1H             in seconds.  The progress report indicates how many files have been dumped, the total[m
+[28;1H             number of files to dump, the percentage of data dumped, and the elapsed time.[m
+[29;1H [m
+[30;1H        [1m-q[0m   Destination tape drive is a QIC tape.  QIC tapes only use a 512 byte  blocksize,  for[m
+[31;1H             which [4mxfsdump[24m must make special allowances.[m
+[32;1H [m
+[33;1H        [1m-s[0m [4mpathname[24m [ [1m-s[0m [4mpathname[24m ... ][m
+[34;1H             Restricts the dump to files contained in the specified pathnames (subtrees).  A [4mpath‐[24m[m
+[35;1H             [4mname[24m must be relative to the mount point  of  the  filesystem.   For  example,  if  a[m
+[36;1H             filesystem  is  mounted  at [4m/d2[24m, the [4mpathname[24m argument for the directory [4m/d2/users[24m is[m
+[37;1H             ``users''.  A [4mpathname[24m can be a file or a directory; if it is a directory, the entire[m
+[38;1H             hierarchy  of  files  and subdirectories rooted at that directory is dumped.  Subtree[m
+[39;1H             dumps cannot be used as the base for incremental dumps (see the [1m-l[0m option above).[m
+[40;1H [m
+[41;1H        [1m-t[0m [4mfile[24m[m
+[42;1H             Sets the dump time to the modification time of [4mfile[24m rather  than  using  the  current[m
+[43;1H             time.  [4mxfsdump[24m uses the dump time to determine what files need to be backed up during[m
+[44;1H             an incremental dump. This option should be used when dumping snapshots  so  that  the[m
+[45;1H             dump  time  matches the time the snapshot was taken. Otherwise files modified after a[m
+[46;1H             snapshot is taken may be skipped in the next incremental dump.[m
+[47;1H [m
+[48;1H        [1m-v[0m [4mverbosity[24m[m
+[49;1H        [1m-v[0m [4msubsys[24m=[4mverbosity[24m[,[4msubsys[24m=[4mverbosity[24m,...][m
+[50;1H             Specifies the level of detail used for messages displayed during the  course  of  the[m
+[51;1H             dump.  The  [4mverbosity[24m  argument  can  be  passed as either a string or an integer. If[m
+[52;1H             passed as a string the following values may be used: [1msilent[0m, [1mverbose[0m,  [1mtrace[0m,  [1mdebug[0m,[m
+[53;1H             or  [1mnitty[0m.  If passed as an integer, values from 0-5 may be used. The values 0-4 cor‐[m
+[54;1H[1;1H             section below for details on setting this file attribute.[m
+[2;1H [m
+[3;1H        [1m-f[0m [4mdest[24m [ [1m-f[0m [4mdest[24m ... ][m
+[4;1H             Specifies a dump destination.  A dump destination can be the  pathname  of  a  device[m
+[5;1H             (such  as  a  tape  drive), a regular file or a remote tape drive (see [4mrmt[24m(8)).  This[m
+[6;1H             option must be omitted if the standard output option (a lone [1m-[0m preceding  the  source[m
+[7;1H             filesystem specification) is specified.[m
+[8;1H [m
+[9;1H        [1m-l[0m [4mlevel[24m[m
+[10;1H             Specifies  a  dump level of 0 to 9.  The dump level determines the base dump to which[m
+[11;1H             this dump is relative.  The base dump is the most recent dump at a lesser  level.   A[m
+[12;1H             level  0 dump is absolute - all files are dumped.  A dump level where 1 <= [4mlevel[24m <= 9[m
+[13;1H             is referred to as an incremental dump.  Only files that have been changed  since  the[m
+[14;1H             base  dump are dumped.  Subtree dumps (see the [1m-s[0m option below) cannot be used as the[m
+[15;1H             base for incremental dumps.[m
+[16;1H [m
+[17;1H        [1m-m[0m   Use the minimal tape protocol for non-scsi tape destinations or remote tape  destina‐[m
+[18;1H             tions  which are not scsi Linux tape drives nor IRIX tape drives.  This option cannot[m
+[19;1H             be used without specifying a blocksize to be used (see [1m-b[0m option above).[m
+[20;1H [m
+[21;1H        [1m-o[0m   Overwrite the tape. With this option, [4mxfsdump[24m does not read the tape first  to  check[m
+[22;1H             the  contents.  This  option  may be used if [4mxfsdump[24m is unable to determine the block[m
+[23;1H             size of a tape .[m
+[24;1H [m
+[25;1H        [1m-p[0m [4minterval[24m[m
+[26;1H             Causes progress reports to be printed at the specified interval.  [4minterval[24m  is  given[m
+[27;1H             in seconds.  The progress report indicates how many files have been dumped, the total[m
+[28;1H             number of files to dump, the percentage of data dumped, and the elapsed time.[m
+[29;1H [m
+[30;1H        [1m-q[0m   Destination tape drive is a QIC tape.  QIC tapes only use a 512 byte  blocksize,  for[m
+[31;1H             which [4mxfsdump[24m must make special allowances.[m
+[32;1H [m
+[33;1H        [1m-s[0m [4mpathname[24m [ [1m-s[0m [4mpathname[24m ... ][m
+[34;1H             Restricts the dump to files contained in the specified pathnames (subtrees).  A [4mpath‐[24m[m
+[35;1H             [4mname[24m must be relative to the mount point  of  the  filesystem.   For  example,  if  a[m
+[36;1H             filesystem  is  mounted  at [4m/d2[24m, the [4mpathname[24m argument for the directory [4m/d2/users[24m is[m
+[37;1H             ``users''.  A [4mpathname[24m can be a file or a directory; if it is a directory, the entire[m
+[38;1H             hierarchy  of  files  and subdirectories rooted at that directory is dumped.  Subtree[m
+[39;1H             dumps cannot be used as the base for incremental dumps (see the [1m-l[0m option above).[m
+[40;1H [m
+[41;1H        [1m-t[0m [4mfile[24m[m
+[42;1H             Sets the dump time to the modification time of [4mfile[24m rather  than  using  the  current[m
+[43;1H             time.  [4mxfsdump[24m uses the dump time to determine what files need to be backed up during[m
+[44;1H             an incremental dump. This option should be used when dumping snapshots  so  that  the[m
+[45;1H             dump  time  matches the time the snapshot was taken. Otherwise files modified after a[m
+[46;1H             snapshot is taken may be skipped in the next incremental dump.[m
+[47;1H [m
+[48;1H        [1m-v[0m [4mverbosity[24m[m
+[49;1H        [1m-v[0m [4msubsys[24m=[4mverbosity[24m[,[4msubsys[24m=[4mverbosity[24m,...][m
+[50;1H             Specifies the level of detail used for messages displayed during the  course  of  the[m
+[51;1H             dump.  The  [4mverbosity[24m  argument  can  be  passed as either a string or an integer. If[m
+[52;1H             passed as a string the following values may be used: [1msilent[0m, [1mverbose[0m,  [1mtrace[0m,  [1mdebug[0m,[m
+[53;1H             or  [1mnitty[0m.  If passed as an integer, values from 0-5 may be used. The values 0-4 cor‐[m
+[54;1H...skipping...
+[7m*[27m       [1m[7m-J[27m[0m   Inhibits  the  normal  update  of the inventory.  This is useful when the media being[m
+             dumped to will be discarded or overwritten.[m
+ [m
+        [1m-K[0m   Generate a format 2 dump instead of the current format. This is useful  if  the  dump[m
+             will  be  restored on a system with an older [4mxfsrestore[24m which does not understand the[m
+             current dump format. Use of this option is otherwise not recommended.[m
+ [m
+        [1m-L[0m [4msession_label[24m[m
+             Specifies a label for the dump session.  It can be any arbitrary  string  up  to  255[m
+             characters long.[m
+ [m
+        [1m-M[0m [4mlabel[24m [ [1m-M[0m [4mlabel[24m ... ][m
+             Specifies a label for the first media object (for example, tape cartridge) written on[m
+             the corresponding destination during the session.  It can be any arbitrary string  up[m
+             to  255 characters long.  Multiple media object labels can be specified, one for each[m
+             destination.[m
+ [m
+        [1m-O[0m [4moptions_file[24m[m
+             Insert the options contained in [4moptions_file[24m into the beginning of the command  line.[m
+             The  options  are specified just as they would appear if typed into the command line.[m
+             In addition, newline characters (\n) can be used  as  whitespace.   The  options  are[m
+             placed  before all options actually given on the command line, just after the command[m
+             name.  Only one [1m-O[0m option can  be  used.   Recursive  use  is  ignored.   The  source[m
+             filesystem cannot be specified in [4moptions_file[24m.[m
+ [m
+        [1m-R[0m   Resumes  a  previously  interrupted  dump  session.   If the most recent dump at this[m
+             dump's level ([1m-l[0m option) was interrupted, this dump contains only files  not  in  the[m
+             interrupted dump and consistent with the incremental level.  However, files contained[m
+             in the interrupted dump that have been subsequently modified are re-dumped.[m
+ [m
+        [1m-T[0m   Inhibits interactive dialogue timeouts.  When the [1m-F[0m option is not specified, [4mxfsdump[24m[m
+             prompts  the operator for labels and media changes.  Each dialogue normally times out[m
+             if no response is supplied.  This option prevents the timeout.[m
+ [m
+        [1m-Y[0m [4mlength[24m[m
+             Specify I/O buffer ring length.  [4mxfsdump[24m uses a ring of  output  buffers  to  achieve[m
+             maximum  throughput when dumping to tape drives.  The default ring length is 3.  How‐[m
+             ever, this is not currently enabled on Linux yet, making this option benign.[m
+ [m
+        [1m-[0m    A lone [1m-[0m causes the dump stream to be sent to the standard output, where  it  can  be[m
+             piped  to another utility such as [4mxfsrestore[24m(8) or redirected to a file.  This option[m
+             cannot be used with the [1m-f[0m option.  The [1m-[0m must follow all other options  and  precede[m
+             the filesystem specification.[m
+ [m
+        The  filesystem,  [4mfilesystem[24m,  can  be  specified  either as a mount point or as a special[m
+        device file (for example, [4m/dev/dsk/dks0d1s0[24m).   The  filesystem  must  be  mounted  to  be[m
+        dumped.[m
+ [m
+ [1mNOTES[0m[m
+    [1mDump[0m [1mInterruption[0m[m
+        A dump can be interrupted at any time and later resumed.  To interrupt, type control-C (or[m
+        the current terminal interrupt character).  The operator is prompted to select one of sev‐[m
+        eral  operations,  including dump interruption.  After the operator selects dump interrup‐[m
+[7m Manual page xfsdump(8) line 200 (press h for help or q to quit)[27m[K[K[7m Manual page xfsdump(8) line 200 (press h for help or q to quit)[27m[K[H[2J[H[7m*[27m       [1m[7m-J[27m[0m   Inhibits  the  normal  update  of the inventory.  This is useful when the media b[m [7m*[27meing[m
+             dumped to will be discarded or overwritten.[m
+ [m
+        [1m-K[0m   Generate a format 2 dump instead of the current format. This is useful  if  the  [m  dump[m
+             will  be  restored on a system with an older [4mxfsrestore[24m which does not understand[m   the[m
+             current dump format. Use of this option is otherwise not recommended.[m
+ [m
+        [1m-L[0m [4msession_label[24m[m
+             Specifies a label for the dump session.  It can be any arbitrary  string  up  to [m   255[m
+             characters long.[m
+ [m
+        [1m-M[0m [4mlabel[24m [ [1m-M[0m [4mlabel[24m ... ][m
+             Specifies a label for the first media object (for example, tape cartridge) writte[m  n on[m
+             the corresponding destination during the session.  It can be any arbitrary string[m    up[m
+             to  255 characters long.  Multiple media object labels can be specified, one for [m  each[m
+             destination.[m
+ [m
+        [1m-O[0m [4moptions_file[24m[m
+             Insert the options contained in [4moptions_file[24m into the beginning of the command  l[m  ine.[m
+             The  options  are specified just as they would appear if typed into the command l[m  ine.[m
+             In addition, newline characters (\n) can be used  as  whitespace.   The  options [m   are[m
+             placed  before all options actually given on the command line, just after the com[m  mand[m
+             name.  Only one [1m-O[0m option can  be  used.   Recursive  use  is  ignored.   The  so[m  urce[m
+             filesystem cannot be specified in [4moptions_file[24m.[m
+ [m
+        [1m-R[0m   Resumes  a  previously  interrupted  dump  session.   If the most recent dump at [m  this[m
+             dump's level ([1m-l[0m option) was interrupted, this dump contains only files  not  in [m   the[m
+             interrupted dump and consistent with the incremental level.  However, files conta[m  ined[m
+             in the interrupted dump that have been subsequently modified are re-dumped.[m
+ [m
+        [1m-T[0m   Inhibits interactive dialogue timeouts.  When the [1m-F[0m option is not specified, [4mxfs[24m[m  [4mdump[24m[m
+             prompts  the operator for labels and media changes.  Each dialogue normally times[m   out[m
+             if no response is supplied.  This option prevents the timeout.[m
+ [m
+        [1m-Y[0m [4mlength[24m[m
+             Specify I/O buffer ring length.  [4mxfsdump[24m uses a ring of  output  buffers  to  ach[m  ieve[m
+             maximum  throughput when dumping to tape drives.  The default ring length is 3.  [m  How�
